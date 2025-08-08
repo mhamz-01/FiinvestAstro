@@ -1,0 +1,256 @@
+@import url(' https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;700;900&display=swap');
+
+@import "tailwindcss";
+
+
+  @keyframes rainbow {
+    14% { color: orange; }
+    28% { color: yellow; }
+  
+  }
+
+  #contactSection h2 {
+    animation: rainbow 8s linear infinite;
+  }
+
+  *{
+    font-family: 'Red Hat Display', sans-serif;
+  }
+ 
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideInFromBottom {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 2s ease-out;
+  }
+
+  .animate-slideIn {
+    animation: slideInFromBottom 1s ease-out;
+  }
+
+  .typewriter-container {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .animate-typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .05em;
+    animation: 
+      typewriter 4s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
+  /* Mobile-first approach */
+  .project-title {
+    font-size: 1.5rem; /* 24px */
+    animation: typewriter 2s steps(20, end);
+  }
+
+  .project-subtitle {
+    font-size: 1rem; /* 16px */
+  }
+
+  /* Tablet */
+  @media (min-width: 640px) {
+    .project-title {
+      font-size: 2rem; /* 32px */
+      animation: typewriter 3s steps(30, end);
+    }
+    .project-subtitle {
+      font-size: 1.125rem; /* 18px */
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    .project-title {
+      font-size: 3rem; /* 48px */
+      animation: typewriter 4s steps(40, end);
+    }
+    .project-subtitle {
+      font-size: 1.25rem; /* 20px */
+    }
+  }
+
+  /* Add this to your existing styles */
+  .animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .animated-lines {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .animated-lines::before,
+  .animated-lines::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    min-width: 300vw;
+    min-height: 300vw;
+    background-color: transparent;
+    border-radius: 45%;
+    animation: rotate 15s linear infinite;
+  }
+  
+  .animated-lines::before {
+    bottom: 15vh;
+    border: 2px solid rgba(219, 171, 35, 0.1);
+    animation-duration: 20s;
+  }
+  
+  .animated-lines::after {
+    bottom: 12vh;
+    border: 2px solid rgba(219, 171, 35, 0.15);
+    animation-duration: 25s;
+  }
+  
+  /* Add diagonal lines */
+  .diagonal-lines {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+  }
+  
+  .diagonal-line {
+    position: absolute;
+    width: 1px;
+    height: 200%;
+    background: linear-gradient(to bottom, 
+      transparent,
+      rgba(219, 171, 35, 0.3),
+      rgba(219, 171, 35, 0.5),
+      rgba(219, 171, 35, 0.3),
+      transparent
+    );
+    animation: moveDiagonal 15s linear infinite;
+  }
+  
+  .diagonal-line:nth-child(1) { left: 20%; animation-delay: 0s; }
+  .diagonal-line:nth-child(2) { left: 40%; animation-delay: -3s; }
+  .diagonal-line:nth-child(3) { left: 60%; animation-delay: -6s; }
+  .diagonal-line:nth-child(4) { left: 80%; animation-delay: -9s; }
+  
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, 0) rotateZ(0deg);
+    }
+    100% {
+      transform: translate(-50%, 0) rotateZ(360deg);
+    }
+  }
+  
+  @keyframes moveDiagonal {
+    0% {
+      transform: translateY(-50%) rotate(45deg);
+    }
+    100% {
+      transform: translateY(0%) rotate(45deg);
+    }
+  }
+  body {
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: #000; /* Light background for better contrast */
+  }
+  .nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #DBAB23;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-btn:hover::after,
+  .nav-btn.active::after {
+    transform: scaleX(1);
+  }
+  
+  @media (max-width: 768px) {
+    #navbar-sticky {
+      animation: slideDown 0.3s ease-out;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .group {
+    position: relative;
+  }
+  
+  .peer:focus + label,
+  .peer:not(:placeholder-shown) + label {
+    transform: translateY(-24px) scale(0.85);
+    color: #DBAB23;
+  }
