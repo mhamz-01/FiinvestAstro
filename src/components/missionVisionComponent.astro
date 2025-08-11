@@ -1,0 +1,99 @@
+---
+import type { MissionVisionData } from './missionVisionData';
+
+interface Props extends MissionVisionData {}
+
+const { mission, vision } = Astro.props;
+---
+
+<section id="missionAndVisionSection" class="relative overflow-hidden mb-24">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div id="contentCard" class="relative group">
+      <!-- Background Effects -->
+      <div class="absolute inset-0.5 bg-gradient-to-r from-[#DBAB23] to-orange-500 rounded-2xl blur opacity-20 group-hover:opacity-100 transition duration-500">
+      </div>
+
+      <!-- Content Container -->
+      <div class="relative bg-[#161616]/80 backdrop-blur-lg p-8 md:p-12 rounded-2xl border border-gray-800">
+        <!-- Decorative Number -->
+        <div class="absolute top-8 right-8 text-8xl font-bold text-[#DBAB23]/10">
+          <span id="cardNumber">01</span>
+        </div>
+
+        <!-- Icon -->
+        <div class="w-16 h-16 bg-[#DBAB23]/10 rounded-full flex items-center justify-center mb-8">
+          <svg id="cardIcon" class="w-8 h-8 text-[#DBAB23]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <Fragment set:html={mission.icon} />
+          </svg>
+        </div>
+
+        <!-- Content -->
+        <div class="max-w-2xl">
+          <span class="text-[#DBAB23] font-medium tracking-wider mb-2 block" id="cardLabel">{mission.label}</span>
+          <h2 id="cardTitle" class="text-3xl md:text-4xl font-bold text-white mb-6 font-redhat text-left"></h2>
+          <p id="cardText" class="text-white/70 text-lg leading-relaxed text-left"></p>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="flex justify-center mt-12 space-x-4">
+          <button id="missionButton" class="w-12 h-1 bg-[#DBAB23] rounded-full transition-all duration-300"></button>
+          <button id="visionButton" class="w-12 h-1 bg-white/20 rounded-full transition-all duration-300"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ mission, vision }}>
+  let currentContent = 'mission';
+  const contentData = { mission, vision };
+
+  function updateContent(type) {
+    const content = contentData[type];
+    const card = document.getElementById('contentCard');
+    card.style.opacity = '0';
+
+    setTimeout(() => {
+      document.getElementById('cardNumber').textContent = content.number;
+      document.getElementById('cardLabel').textContent = content.label;
+      document.getElementById('cardTitle').textContent = content.title;
+      document.getElementById('cardText').textContent = content.text;
+      document.getElementById('cardIcon').innerHTML = content.icon;
+      
+      document.getElementById('missionButton').className = `w-12 h-1 rounded-full transition-all duration-300 ${type === 'mission' ? 'bg-[#DBAB23]' : 'bg-white/20'}`;
+      document.getElementById('visionButton').className = `w-12 h-1 rounded-full transition-all duration-300 ${type === 'vision' ? 'bg-[#DBAB23]' : 'bg-white/20'}`;
+      
+      card.style.opacity = '1';
+    }, 300);
+  }
+
+  // Initial content
+  updateContent('mission');
+
+  // Auto-rotation
+  let interval = setInterval(() => {
+    currentContent = currentContent === 'mission' ? 'vision' : 'mission';
+    updateContent(currentContent);
+  }, 5000);
+
+  // Button click handlers
+  document.getElementById('missionButton')?.addEventListener('click', () => {
+    clearInterval(interval);
+    currentContent = 'mission';
+    updateContent('mission');
+    interval = setInterval(() => {
+      currentContent = currentContent === 'mission' ? 'vision' : 'mission';
+      updateContent(currentContent);
+    }, 5000);
+  });
+
+  document.getElementById('visionButton')?.addEventListener('click', () => {
+    clearInterval(interval);
+    currentContent = 'vision';
+    updateContent('vision');
+    interval = setInterval(() => {
+      currentContent = currentContent === 'mission' ? 'vision' : 'mission';
+      updateContent(currentContent);
+    }, 5000);
+  });
+</script>

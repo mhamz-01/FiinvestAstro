@@ -116,7 +116,79 @@ import HeaderLink from './HeaderLink.astro';
 		  </div>
 		</nav>
 	  </section>
-	  
+	  ---
+// ...existing imports...
+---
+
+<!-- ...existing HTML... -->
+
+<script>
+  function scrollToSection(sectionId: string) {
+    // Check if we're on the home page
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    
+    if (isHomePage) {
+      // If on home page, scroll to section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If on another page, redirect to home with section hash
+      window.location.href = `/#${sectionId}`;
+    }
+  }
+
+  // Function to handle page load with hash
+  function handleHashScroll() {
+    if (window.location.hash) {
+      const sectionId = window.location.hash.slice(1); // Remove the # symbol
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Small delay to ensure DOM is ready
+    }
+  }
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', handleHashScroll);
+
+  // Desktop menu buttons
+  document.getElementById('servicesBtn')?.addEventListener('click', () => scrollToSection('servicesSection'));
+  document.getElementById('TeamBtn')?.addEventListener('click', () => scrollToSection('TeamSection'));
+  document.getElementById('aboutBtn')?.addEventListener('click', () => scrollToSection('AboutUsPageSection'));
+  document.getElementById('contactBtn')?.addEventListener('click', () => scrollToSection('contactSection'));
+  document.getElementById('homeBtn')?.addEventListener('click', () => {
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.location.href = '/';
+    }
+  });
+
+  // Mobile menu buttons
+  document.getElementById('servicesBtnMobile')?.addEventListener('click', () => {
+    scrollToSection('servicesSection');
+    const mobileMenu = document.getElementById('navbar-sticky');
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+  });
+  
+  // ...repeat for other mobile buttons with same pattern...
+
+  document.getElementById('homeBtnMobile')?.addEventListener('click', () => {
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.location.href = '/';
+    }
+    const mobileMenu = document.getElementById('navbar-sticky');
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+  });
+</script>
 </header>
 <div class="mt-20"></div> <!-- Adjust this as needed to create space below the navbar -->
 
