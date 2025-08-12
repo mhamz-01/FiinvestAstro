@@ -3,6 +3,8 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import Services from '../../components/servicesComponent.astro';
+import {servicesContent} from '../../components/serviceData';
 import '../../styles/projects.css';
 ---
 
@@ -29,297 +31,96 @@ import '../../styles/projects.css';
         <Header/>
        
        
-  <div class="relative bg-cover bg-center min-h-screen animate-fadeIn overflow-hidden"
-  style="background-image: url('/images/service_herosection.jpg');" id="banner">
-  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-  <div class="relative min-h-screen flex items-center justify-center py-20 px-4">
-    <div class="text-center w-full max-w-4xl mx-auto">
-      <!-- Tagline -->
-      <span class="text-[#DBAB23] text-sm md:text-base font-medium tracking-wider mb-4 block animate-fadeIn">
-        INNOVATIVE FINANCIAL SERVICES
-      </span>
-
-      <!-- Main Heading -->
-      <div class="typewriter-container mb-6">
-        <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white project-title animate-typewriter leading-tight">
-          Empowering Your<br class="hidden sm:block"/>Financial Journey
-        </h1>
-      </div>
-
-      <!-- Subtitle -->
-      <h2 class="mt-4 text-base sm:text-lg md:text-2xl text-white/80 project-subtitle animate-slideIn max-w-3xl mx-auto px-4" 
-          style="animation-delay: 1s;">
-        Strategic financial solutions tailored to your goals, from private equity to wealth management
-      </h2>
-      
-      <!-- Call to Action Buttons -->
-      <div class="mt-8 md:mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-slideIn px-4" 
-           style="animation-delay: 1.5s;">
-        <button id="bookAppointmentBtn"
-          class="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#DBAB23] text-black rounded-full hover:bg-white transition-all duration-300 font-medium flex items-center justify-center space-x-2 group"
-        >
-          <span>Get Started</span>
-          <svg class="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" 
-               fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </button>
-        
-        <button onclick="document.getElementById('private-equity').scrollIntoView({behavior: 'smooth'})"
-          class="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-transparent border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-all duration-300 font-medium flex items-center justify-center space-x-2 group"
-        >
-          <span>Our Services</span>
-          <svg class="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" 
-               fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Stats Section -->
-    </div>
-  </div>
-</div>
+        <section class="relative min-h-screen animate-fadeIn" id="banner">
+          <!-- Background Image -->
+          <div 
+            class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+            style="background-image: url('/images/service_herosection.jpg');"
+          ></div>
+    
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-black/60 z-1"></div>
+    
+          <!-- Content -->
+          <div class="relative z-10 min-h-screen flex items-center justify-center py-20 px-4">
+            <div class="text-center w-full max-w-4xl mx-auto">
+              <!-- Tagline -->
+              <span class="text-[#DBAB23] text-sm md:text-base font-medium tracking-wider mb-4 block animate-fadeIn">
+                INNOVATIVE FINANCIAL SERVICES
+              </span>
+    
+              <!-- Main Heading -->
+              <div class="typewriter-container mb-6">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white project-title animate-typewriter leading-tight">
+                  Empowering Your<br class="hidden sm:block"/>Financial Journey
+                </h1>
+              </div>
+    
+              <!-- Subtitle -->
+              <h2 class="mt-4 text-base sm:text-lg md:text-2xl text-white/80 project-subtitle animate-slideIn max-w-3xl mx-auto px-4" 
+                  style="animation-delay: 1s;">
+                Strategic financial solutions tailored to your goals, from private equity to wealth management
+              </h2>
+              
+              <!-- Call to Action Buttons -->
+              <div class="mt-8 md:mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-slideIn px-4" 
+                   style="animation-delay: 1.5s;">
+                <!-- ...existing buttons... -->
+                <div class="mt-8 md:mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-slideIn px-4" 
+                style="animation-delay: 1.5s;">
+             <button id="bookAppointmentBtn"
+               class="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#DBAB23] text-black rounded-full hover:bg-white transition-all duration-300 font-medium flex items-center justify-center space-x-2 group"
+             >
+               <span>Get Started</span>
+               <svg class="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" 
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+               </svg>
+             </button>
+             
+             <button onclick="document.getElementById('private-equity').scrollIntoView({behavior: 'smooth'})"
+               class="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-transparent border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-all duration-300 font-medium flex items-center justify-center space-x-2 group"
+             >
+               <span>Our Services</span>
+               <svg class="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" 
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+               </svg>
+             </button>
+           </div>
+     
+              </div>
+            </div>
+          </div>
+        </section>
 <!-- END OF BANNER -->
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-<section class="w-full bg-[#DBAB23] py-16">
-<div class="container mx-auto px-4">
-  <h2 class="text-5xl md:text-7xl font-bold text-black text-center font-redhat leading-tight">
-    Consultancies Provided<br/>
-    <span class="text-white">by Fiinvest</span>
-  </h2>
-</div>
+<section class="w-full bg-black/50 backdrop-blur-sm py-16 relative">
+  <!-- Change the gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#DBAB23]/30 to-[#DBAB23]/40 pointer-events-none"></div>
+  
+  <!-- Content container with relative positioning -->
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Update text color for better contrast -->
+    <h2 class="text-5xl md:text-7xl font-bold text-white text-center font-redhat leading-tight">
+      Consultancies Provided<br/>
+      <span class="text-[#DBAB23]">by Fiinvest</span>
+    </h2>
+  </div>
 </section>
 
-<!-- Team/Consultancy Section -->
-<section class="py-24" >
-<div class="container mx-auto px-4" id="private-equity">
-  <!-- TeamRow 1 - Private Equity -->
-  <div class="flex flex-col md:flex-row items-center gap-16 mb-32">
-    <div class="flex-1 order-2 md:order-1">
-      <div class="space-y-6 bg-[#161616] backdrop-blur-sm p-8 rounded-2xl border border-gray-800">
-        <div class="inline-block">
-          <span class="text-[#DBAB23] font-medium tracking-wide">01 | PRIVATE EQUITY</span>
-          <div class="h-1 w-full bg-[#DBAB23] mt-2"></div>
-        </div>
-        <h3 class="text-4xl md:text-5xl font-bold text-white font-redhat leading-tight">
-          Strategic Private<br/>Equity Solutions
-        </h3>
-        <p class="text-white/80 text-lg leading-relaxed">
-          Unlock exceptional growth opportunities through our comprehensive private equity consulting Team. We provide expert guidance in deal structuring, portfolio management, and value creation strategies.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Deal Structuring</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Portfolio Optimization</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Exit Strategy</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Value Creation</span>
-          </div>
-        </div>
-        
-        <!-- Added CTA Button -->
-        <div class="mt-8 pt-6 border-t border-gray-800">
-          <button onclick="window.location.href='#contactSection'" 
-            class="group w-full md:w-auto px-8 py-4 bg-transparent border-2 border-[#DBAB23] text-[#DBAB23] rounded-lg hover:bg-[#DBAB23] hover:text-black transition-all duration-300 flex items-center justify-center space-x-2">
-            <span class="font-medium">Explore Private Equity Opportunities</span>
-            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="flex-1 order-1 md:order-2">
-      <div class="relative group">
-        <img src="images/privatequity.jpg" alt="Private Equity" class="w-full rounded-lg shadow-2xl">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#DBAB23]/20 to-transparent rounded-lg"></div>
-        
-        <!-- Badges -->
-        <div class="absolute top-4 left-4 flex flex-col gap-3">
-          <div class="bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
-            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span class="text-white text-sm">Active Investments</span>
-          </div>
-          <div class="bg-[#DBAB23]/90 backdrop-blur-sm px-4 py-2 rounded-full">
-            <span class="text-black font-medium">$500M+ Managed</span>
-          </div>
-        </div>
-
-        <!-- Success Rate Badge -->
-        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-full">
-          <span class="text-black font-bold text-xl">95%</span>
-          <span class="text-black/70 text-xs block">Success Rate</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TeamRow 2 - Mutual Funds -->
-  <div class="flex flex-col md:flex-row items-center gap-16 mb-32"  id="stocks" >
-    <div class="flex-1">
-      <div class="relative group">
-        <img src="images/mutualfunds.jpg" alt="Mutual Funds" class="w-full rounded-lg shadow-2xl">
-        <div class="absolute inset-0 bg-gradient-to-l from-[#DBAB23]/20 to-transparent rounded-lg"></div>
-        
-        <!-- Badges -->
-        <div class="absolute top-4 left-4 flex flex-col gap-3">
-          <div class="bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
-            <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-            <span class="text-white text-sm">Diverse Portfolio</span>
-          </div>
-          <div class="bg-[#DBAB23]/90 backdrop-blur-sm px-4 py-2 rounded-full">
-            <span class="text-black font-medium">20+ Fund Options</span>
-          </div>
-        </div>
-
-        <!-- Performance Badge -->
-        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-full">
-          <span class="text-black font-bold text-xl">15%</span>
-          <span class="text-black/70 text-xs block">Avg. Returns</span>
-        </div>
-      </div>
-    </div>
-    <div class="flex-1">
-      <div class="space-y-6 bg-[#161616] backdrop-blur-sm p-8 rounded-2xl border border-gray-800">
-        <div class="inline-block">
-          <span class="text-[#DBAB23] font-medium tracking-wide">02 | MUTUAL FUNDS</span>
-          <div class="h-1 w-full bg-[#DBAB23] mt-2"></div>
-        </div>
-        <h3 class="text-4xl md:text-5xl font-bold text-white font-redhat leading-tight">
-          Expert Mutual Fund<br/>Management
-        </h3>
-        <p class="text-white/80 text-lg leading-relaxed">
-          Maximize your investment potential with our tailored mutual fund solutions. Our expertise helps you navigate diverse investment options and build resilient portfolios aligned with your goals.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Fund Selection</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Risk Assessment</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Portfolio Diversification</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Performance Monitoring</span>
-          </div>
-        </div>
-        
-        <!-- Added CTA Button -->
-        <div class="mt-8 pt-6 border-t border-gray-800">
-          <button onclick="window.location.href='#contactSection'" 
-            class="group w-full md:w-auto px-8 py-4 bg-transparent border-2 border-[#DBAB23] text-[#DBAB23] rounded-lg hover:bg-[#DBAB23] hover:text-black transition-all duration-300 flex items-center justify-center space-x-2">
-            <span class="font-medium">Start Your Investment Journey</span>
-            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      
-    </div>
 
 
-  </div>
 
-  <!-- TeamRow 3 - Stocks -->
-  <div class="flex flex-col md:flex-row items-center gap-16" id="mutual-funds">
-    <div class="flex-1 order-2 md:order-1">
-      <div class="space-y-6 bg-[#161616] backdrop-blur-sm p-8 rounded-2xl border border-gray-800">
-        <div class="inline-block">
-          <span class="text-[#DBAB23] font-medium tracking-wide">03 | STOCKS</span>
-          <div class="h-1 w-full bg-[#DBAB23] mt-2"></div>
-        </div>
-        <h3 class="text-4xl md:text-5xl font-bold text-white font-redhat leading-tight">
-          Strategic Stock<br/>Trading Advisory
-        </h3>
-        <p class="text-white/80 text-lg leading-relaxed">
-          Navigate the stock market with confidence using our expert trading strategies and market analysis. We provide comprehensive research and personalized recommendations for optimal returns.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Market Analysis</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Trading Strategies</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Risk Management</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
-            <span class="text-white">Portfolio Tracking</span>
-          </div>
-        </div>
-        <div class="mt-8 pt-6 border-t border-gray-800">
-          <button onclick="window.location.href='#contactSection'" 
-            class="group w-full md:w-auto px-8 py-4 bg-transparent border-2 border-[#DBAB23] text-[#DBAB23] rounded-lg hover:bg-[#DBAB23] hover:text-black transition-all duration-300 flex items-center justify-center space-x-2">
-            <span class="font-medium">Start Trading Today</span>
-            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="flex-1 order-1 md:order-2">
-      <div class="relative group">
-        <img src="images/stocks.jpg" alt="Stocks" class="w-full rounded-lg shadow-2xl">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#DBAB23]/20 to-transparent rounded-lg"></div>
-        
-        <!-- Badges -->
-        <div class="absolute top-4 left-4 flex flex-col gap-3">
-          <div class="bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
-            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-            <span class="text-white text-sm">Live Trading</span>
-          </div>
-          <div class="bg-[#DBAB23]/90 backdrop-blur-sm px-4 py-2 rounded-full">
-            <span class="text-black font-medium">24/7 Support</span>
-          </div>
-        </div>
 
-        <!-- Trading Volume Badge -->
-        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-full">
-          <span class="text-black font-bold text-xl">1M+</span>
-          <span class="text-black/70 text-xs block">Daily Trades</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
+
+
+
+
+<Services {...servicesContent} />
 
 
 <!-- Contact Form Section -->
@@ -481,4 +282,37 @@ import '../../styles/projects.css';
         
         <Footer />
     </body>
+    
 </html>
+<style>
+  /* Ensure image preload */
+  #banner::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('/images/service_herosection.jpg');
+    opacity: 0;
+    z-index: -1;
+  }
+
+  /* Add fade-in animation */
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Prevent background image from disappearing */
+  .bg-cover {
+    background-size: cover;
+    background-attachment: fixed;
+    will-change: transform;
+  }
+</style>

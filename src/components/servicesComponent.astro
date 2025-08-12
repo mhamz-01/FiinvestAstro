@@ -1,0 +1,73 @@
+---
+import type { ServicesData } from './serviceData';
+
+interface Props extends ServicesData {}
+
+const { services } = Astro.props;
+---
+
+<section class="py-24">
+  <div class="container mx-auto px-4" id="services">
+    {services.map((service, index) => (
+      <div class={`flex flex-col md:flex-row items-center gap-16 ${index !== services.length - 1 ? 'mb-32' : ''}`} id={service.id}>
+        <div class={`flex-1 ${index % 2 === 0 ? 'order-2 md:order-1' : ''}`}>
+          <div class="space-y-6 bg-[#161616] backdrop-blur-sm p-8 rounded-2xl border border-gray-800">
+            <div class="inline-block">
+              <span class="text-[#DBAB23] font-medium tracking-wide">{service.number} | {service.title}</span>
+              <div class="h-1 w-full bg-[#DBAB23] mt-2"></div>
+            </div>
+            <h3 class="text-4xl md:text-5xl font-bold text-white font-redhat leading-tight">
+              {service.heading.split('\n').map((line) => (
+                <Fragment>
+                  {line}<br/>
+                </Fragment>
+              ))}
+            </h3>
+            <p class="text-white/80 text-lg leading-relaxed">
+              {service.description}
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+              {service.features.map((feature) => (
+                <div class="flex items-center space-x-3">
+                  <div class="w-2 h-2 bg-[#DBAB23] rounded-full"></div>
+                  <span class="text-white">{feature}</span>
+                </div>
+              ))}
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-800">
+              <button onclick="window.location.href='#contactSection'" 
+                class="group w-full md:w-auto px-8 py-4 bg-transparent border-2 border-[#DBAB23] text-[#DBAB23] rounded-lg hover:bg-[#DBAB23] hover:text-black transition-all duration-300 flex items-center justify-center space-x-2">
+                <span class="font-medium">{service.ctaText}</span>
+                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class={`flex-1 ${index % 2 === 0 ? 'order-1 md:order-2' : ''}`}>
+          <div class="relative group">
+            <img src={service.image} alt={service.title} class="w-full rounded-lg shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#DBAB23]/20 to-transparent rounded-lg"></div>
+            
+            <div class="absolute top-4 left-4 flex flex-col gap-3">
+              <div class="bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
+                <div class={`w-2 h-2 bg-${service.badges.status.color}-500 rounded-full animate-pulse`}></div>
+                <span class="text-white text-sm">{service.badges.status.text}</span>
+              </div>
+              <div class="bg-[#DBAB23]/90 backdrop-blur-sm px-4 py-2 rounded-full">
+                <span class="text-black font-medium">{service.badges.info}</span>
+              </div>
+            </div>
+
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-full">
+              <span class="text-black font-bold text-xl">{service.badges.metric.value}</span>
+              <span class="text-black/70 text-xs block">{service.badges.metric.label}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
