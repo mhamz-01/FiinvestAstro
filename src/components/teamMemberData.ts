@@ -20,25 +20,25 @@ export interface TeamMember {
       {
         role: "CEO",
         name: "Fahad Imran",
-        image: "images/ceoFinvest.jpg",
+        image: "https://ik.imagekit.io/a6bzcaqbn/images/ceoFinvest.jpg?updatedAt=1749752504634",
         modalId: "ceo"
       },
       {
         role: "Wealth Manager",
         name: "Saleem Chaudhry",
-        image: "images/logo/fiinvestTransparentLOgo.png",
+        image: "https://ik.imagekit.io/a6bzcaqbn/images/logo/fiinvestTransparentLOgo.png?updatedAt=1749752511517",
         modalId: "Wealth Manager"
       },
       {
         role: "Financial Advisor",
         name: "Dr Abdul Wahab",
-        image: "images/logo/fiinvestTransparentLOgo.png",
+        image: "https://ik.imagekit.io/a6bzcaqbn/images/logo/fiinvestTransparentLOgo.png?updatedAt=1749752511517",
         modalId: "Financial Advisor"
       },
       {
         role: "Financial Advisor",
         name: "Ahtisham Mehsud",
-        image: "images/logo/fiinvestTransparentLOgo.png",
+        image: "https://ik.imagekit.io/a6bzcaqbn/images/logo/fiinvestTransparentLOgo.png?updatedAt=1749752511517",
         modalId: "Financial Advisor2"
       }
     ]

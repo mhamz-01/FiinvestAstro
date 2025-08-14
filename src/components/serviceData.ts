@@ -48,7 +48,7 @@ export interface ServiceFeature {
           "Exit Strategy",
           "Value Creation"
         ],
-        image: "images/privatequity.jpg",
+        image: "https://ik.imagekit.io/a6bzcaqbn/images/privatequity.jpg?updatedAt=1749752504887",
         ctaText: "Explore Private Equity Opportunities",
         badges: {
           status: {
@@ -74,7 +74,7 @@ export interface ServiceFeature {
           "Risk Management",
           "Regular Monitoring"
         ],
-        image: "images/mutualfunds.jpg",
+        image: "https://ik.imagekit.io/a6bzcaqbn/images/financeBanner.jpg?updatedAt=1755189793880",
         ctaText: "Discover Mutual Fund Options",
         badges: {
           status: {
@@ -100,7 +100,7 @@ export interface ServiceFeature {
           "Risk Assessment",
           "Portfolio Tracking"
         ],
-        image: "images/stocks.jpg",
+        image: "https://ik.imagekit.io/a6bzcaqbn/images/stocks.jpg?updatedAt=1749752510704",
         ctaText: "Start Trading Today",
         badges: {
           status: {
